@@ -1,8 +1,10 @@
+# -*- coding: utf-8 -*-
+
 import random 
 from enum import Enum
 
-
 class Game:
+    ''' game logic '''
     def __init__(self, number = 1, pot = 100, bet = [1]) :       
         self.pot = pot                              # pot amount
         self.bet = bet                              # List of bet amounts on diff. faces : [spade, heart, diamond, club, crown, flag]
@@ -28,9 +30,9 @@ class Game:
     @bet.setter
     def bet(self, bet):
         '''
-        sets bet if in [1, pot]
+        sets bet if total bet in [1, pot]
         '''
-        print(type(sum))
+       # print(type(sum))
         if sum(bet) >= 1 and sum(bet) <= self.pot :
             self.__bet = bet
         else :
