@@ -21,14 +21,12 @@ class Dices(tk.Tk) :
         
 
         self.__v_bet_spade = tk.IntVar()
-        self.__v_bet_spade.set(0)
         self.__v_bet_heart = tk.IntVar() 
         self.__v_bet_diamond = tk.IntVar() 
         self.__v_bet_club = tk.IntVar() 
         self.__v_bet_crown = tk.IntVar() 
         self.__v_bet_flag = tk.IntVar() 
-        
-        self.__v_bet_heart.set(90)
+
         
         # registering validation command
         vldt_bet_cmd = (self.register(self.__validate_bet_amt),'%s', '%S', '%W')
