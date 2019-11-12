@@ -92,7 +92,7 @@ class Dices(tk.Tk) :
         ''' 
         bet = [self.__v_bet_spade.get(), self.__v_bet_heart.get(), self.__v_bet_diamond.get(),
                self.__v_bet_club.get(), self.__v_bet_crown.get(), self.__v_bet_flag.get()]
-        return self.game.pot - sum(bet)
+        return self.__game.pot - sum(bet)
 
     
     
