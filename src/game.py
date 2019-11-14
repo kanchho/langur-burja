@@ -2,6 +2,7 @@
 
 import random 
 from enum import Enum
+import os
 
 class Game:
     ''' game logic '''
@@ -85,7 +86,7 @@ class Game:
                 
         text += f'\nYour pot is now {self.pot}'
         return text
-        
+     
     ## Map numeral dice's faces to symbols
     class Dice(Enum) :
         SPADE = 1
