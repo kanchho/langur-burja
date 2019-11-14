@@ -86,6 +86,24 @@ class Game:
                 
         text += f'\nYour pot is now {self.pot}'
         return text
+
+    
+    def read(self, filename) :
+        '''restores pot to existing one or starts a new game'''
+        result = False #restoration was not sucessful or the pot was 0
+        if os.path.exists(filename) :
+            with open(filename) as f :
+                self.pot = int(f.read())
+                if self.pot <= 0 :                   
+                    self.pot = 100
+                else :
+                    result = True
+        return result
+    
+    def save(self, filename) :
+        '''saves pot'''
+        with open(filename, 'w+') as f :
+            f.write(str(self.pot))
      
     ## Map numeral dice's faces to symbols
     class Dice(Enum) :

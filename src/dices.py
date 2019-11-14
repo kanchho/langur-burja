@@ -93,8 +93,18 @@ class Dices(tk.Tk) :
         
       # self.grid_columnconfigure(0, weight=1)
       # self.grid_columnconfigure(2, weight=1)
-      
+
+        if not self.__game.read('pot.dat') :
+            self.__result.set(f'The pot starts from {self.__game.pot}')
+        else :
+            if tk.messagebox.askyesno('Continue previous game?', f'The pot is {self.__game.pot}'):
+                self.__result.set(f'The pot is {self.__game.pot}')
+                self.__spinbox_maxbet_setter(self.__game.pot)
+            else :
+                self.__game.pot = 100
+                self.__result.set(f'The pot starts from {self.__game.pot}')
         
+     
     def __bet_available(self):
         '''
         returns valid bet amount that can be placed. 
@@ -130,7 +140,6 @@ class Dices(tk.Tk) :
         widget_name = None
         if current_widget :
             max_bet = self.__bet_available()
-            print(max_bet)
             widget_name = self.nametowidget(current_widget)
         for spinbox in spinboxes : 
             if spinbox is widget_name :
@@ -158,8 +167,8 @@ class Dices(tk.Tk) :
             self.__result.set(self.__result.get() + "\n" + "Game Over")
             
         self.__spinbox_maxbet_setter(self.__game.pot)
-        
-            
+        self.__game.save('pot.dat')
+                
    
 if __name__ == '__main__' :
     Dices().mainloop()
